@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+  <head>
+  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC Face Filter Booth</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./assets/face-api.min.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      
+      <header class="bento-card header-card">
+        <div class="header-titles">
+          <p class="eyebrow">Shilmi's Project</p>
+          <h1 id="appTitle">Fil&Stick Cam</h1>
+        </div>
+        <div class="status-pill" id="cameraStatus">Menyiapkan kamera...</div>
+      </header>
+
+      <div class="main-grid">
+        <section class="left-column">
+          <div class="bento-card camera-card" aria-label="Webcam Preview">
+            <div class="camera-frame">
+              <video id="webcamVideo" autoplay muted playsinline></video>
+              <canvas id="overlayCanvas" aria-hidden="true"></canvas>
+              <div class="camera-placeholder" id="cameraPlaceholder">
+                <span class="pulse-icon">📸</span>
+                Meminta izin kamera...
+              </div>
+            </div>
+            
+            <div class="camera-footer">
+              <div class="status-text">
+                <p class="error-message" id="errorMessage" role="alert"></p>
+                <p class="model-status" id="modelStatus">Model face-api.js belum dimuat</p>
+              </div>
+              <button class="capture-button" id="captureButton" type="button" disabled>
+                <div class="capture-inner"></div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="right-column">
+          
+          <div class="bento-card controls-card" aria-label="Kontrol Filter dan Sticker">
+            <div class="control-group">
+              <h2>Filters</h2>
+              <div class="segmented-control" id="filterControls" role="group" aria-label="Pilihan filter">
+                </div>
+            </div>
+
+            <div class="control-group">
+              <h2>Stickers</h2>
+              <div class="segmented-control" id="stickerControls" role="group" aria-label="Pilihan sticker">
+                <button class="chip" type="button" data-sticker="glasses">Glasses</button>
+                <button class="chip" type="button" data-sticker="hat">Hat</button>
+                <button class="chip" type="button" data-sticker="moustache">Moustache</button>
+                <button class="chip" type="button" data-sticker="matalove">Love</button>
+                <button class="chip" type="button" data-sticker="topi"> Hat 1</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-card preview-card" aria-labelledby="previewTitle">
+            <header class="section-header">
+              <h2 id="previewTitle">Preview</h2>
+            </header>
+            
+            <div class="capture-preview">
+              <canvas id="captureCanvas"></canvas>
+              <div class="empty-preview" id="emptyPreview">
+                <span class="empty-icon">👻</span>
+                Belum ada jepretan
+              </div>
+            </div>
+
+            <div class="export-bar" aria-label="Export gambar">
+              <div class="format-wrapper">
+                <div class="segmented-control format-controls" id="formatControls" role="group">
+                  <button class="chip format-chip active" type="button" data-format="jpeg" aria-pressed="true">JPG</button>
+                  <button class="chip format-chip" type="button" data-format="png" aria-pressed="false">PNG</button>
+                  <button class="chip format-chip" type="button" data-format="webp" aria-pressed="false">WEBP</button>
+                </div>
+              </div>
+              <button class="secondary-button" id="downloadButton" type="button" disabled>
+                Download ↓
+              </button>
+            </div>
+          </div>
+          
+        </section>
+      </div>
+
+      <section class="bento-card gallery-section" aria-labelledby="galleryTitle">
+        <header class="section-header gallery-header">
+          <h2 id="galleryTitle">🖼️ Gallery</h2>
+          <span class="gallery-count" id="galleryCount">0 foto</span>
+        </header>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </section>
+
+    </main>
+  </body>
+</html>
